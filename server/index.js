@@ -5,7 +5,7 @@ import path from "path";
 
 const app = express();
 const PORT = 8080;
-const TOKEN_FILE = path.resolve("data/tokens.json");
+const TOKEN_FILE = path.resolve("my-token-app/data/tokens.json");
 
 app.use(cors());
 

@@ -13,6 +13,8 @@ const App: React.FC = () => {
   const [newTokens, setNewTokens] = useState<NewToken[] | null>(null);
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
     const fetchNewTokens = async () => {
       try {
         const res = await fetch("http://localhost:8080/new-tokens");
@@ -27,6 +29,9 @@ const App: React.FC = () => {
     };
 
     fetchNewTokens();
+    interval = setInterval(fetchNewTokens, 15000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
